@@ -5,15 +5,28 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "generate": "graphql-codegen --config codegen.ts",
+    "compile": "npm run generate && tsc",
+    "dev": "concurrently \"nx serve\" \"npm codegen --watch\""
   },
   "private": true,
   "dependencies": {
+    "@apollo/server": "^4.9.1",
+    "@graphql-codegen/typescript-document-nodes": "^4.0.1",
     "axios": "^1.0.0",
+    "concurrently": "^8.2.0",
     "express": "~4.18.1",
+    "graphql": "^16.7.1",
+    "graphql-codegen": "^0.4.0",
+    "init": "^0.1.2",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/introspection": "4.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-resolvers": "^4.0.1",
     "@nx/esbuild": "16.6.0",
     "@nx/eslint-plugin": "16.6.0",
     "@nx/jest": "16.6.0",
